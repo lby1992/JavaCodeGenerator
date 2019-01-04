@@ -17,7 +17,7 @@ class JavaElement:
         :param annotations: 注解
         """
         self.name = name
-        self.member_type = element_type
+        self.element_type = element_type
         self.return_type = return_type
         self.visibility = visibility
         self.is_static = is_static
@@ -31,9 +31,10 @@ class JavaPackage(JavaElement):
     def __init__(self, name, description=None):
         super().__init__(name, element_type=TYPE_PACKAGE, description=description, return_type=None, visibility=None,
                          is_static=False, inherit_modifier=None, initialization_value=None, annotations=None)
+        self.children = list()
 
-    def add_package(self):
-        pass
+    def add_child(self, child):
+        self.children.append(child)
 
 
 class JavaType(JavaElement):
